@@ -5,7 +5,7 @@
 %title= "#{@abstract_model.try(:pretty_name) || @page_name} | #{[_get_plugin_name[0] || 'Rails', _get_plugin_name[1] || 'Admin'].join(' ')}"
 .page-header
   - if content_for?(:contextual_header)
-    - content_for(:contextual_header)
+    = content_for(:contextual_header)
   - else
     %h1= @page_name
 - flash && flash.each do |key, value|
@@ -17,4 +17,4 @@
   = menu_for((@abstract_model ? (@object.try(:persisted?) ? :member : :collection) : :root), @abstract_model, @object)
   = content_for :contextual_tabs
 = yield
-- content_for(:contextual_footer)
+= content_for(:contextual_footer)
